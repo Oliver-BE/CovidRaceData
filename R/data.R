@@ -1,6 +1,6 @@
 #' COVID-19 Data By Race and Ethnicity
 #'
-#' This package contains data sets on the COVID-19 pandemic in the US by race and ethnicity.
+#' This package contains data sets on the COVID-19 pandemic in the US by race and ethnicity (as of 10/07/2020).
 #' @docType package
 #' @name CovidRaceData
 #' @aliases CovidRaceData CovidRaceData-package

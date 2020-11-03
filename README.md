@@ -9,9 +9,9 @@
 <!-- badges: end -->
 
 The `CovidRaceData` package contains two data sets on the COVID-19
-pandemic in the US by race/ethnicity. More specifically, it has data for
-the number of COVID-19 cases and deaths by race/ethnicity for each
-state.
+pandemic in the US by race/ethnicity (as of 10/07/2020). More
+specifically, it has data for the number of COVID-19 cases and deaths by
+race/ethnicity for each state.
 
 The raw data set (`covid_race_data_raw`) was obtained from [The COVID
 Tracking
@@ -117,13 +117,13 @@ chisq.test(observed_frequency_deaths, p = expected_frequency)
 #> X-squared = 20960, df = 6, p-value < 2.2e-16
 ```
 
-Our observed test statistic \(X^2\) is \(20960\) and our p-value is
-\(2.2e-16\). Thus at a significance level \(\alpha=0.01\) we can reject
-the null hypothesis and conclude that there’s sufficient evidence to
-suggest that the distribution of the number of COVID-19 deaths by race
-does not match the distribution of the population of the US by race.
-**This means that the distribution of COVID-19 deaths by race do not
-match what we would expect them to be (based on the distribution of
+Our observed test statistic **X^2** is **20960** and our p-value is
+**2.2e-16**. Thus at a significance level of **alpha = 0.01** we can
+reject the null hypothesis and conclude that there’s sufficient evidence
+to suggest that the distribution of the number of COVID-19 deaths by
+race does not match the distribution of the population of the US by
+race. **This means that the distribution of COVID-19 deaths by race do
+not match what we would expect them to be (based on the distribution of
 population by race).**
 
 #### ANOVA Test
