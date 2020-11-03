@@ -79,10 +79,11 @@ colnames(df_deaths_population_by_percent) <- c("Race", "Variable", "Value")
 ggplot(df_deaths_population_by_percent, aes(x = Race, y = Value, fill = Variable)) +
   geom_bar(stat = "identity", position = "dodge") +
   geom_text(aes(label = round(Value, 3)),
-            position = position_dodge(width = 0.9), vjust = -0.25) +
+            position = position_dodge(width = 0.9), vjust = -0.25, size = 2.85) +
   scale_fill_discrete(labels = c("COVID-19 deaths", "Population")) +
   labs(x = "Race or ethnicity", y = "Percentage", fill = "Legend",
-       title = "Percentage of total COVID-19 deaths compared to percentage of total US population by race or ethnicity")
+       title = "Percentage of total COVID-19 deaths compared to percentage of total US \n
+       population by race or ethnicity")
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
