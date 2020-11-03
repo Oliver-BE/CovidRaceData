@@ -62,9 +62,8 @@ ggplot(aggregated_covid_race_df, aes(x = reorder(Race, Cases_Per_100K), y = Case
 
 We can also use the provided data sets to answer questions such as **whether or not there is a significant difference in the number of COVID-19 deaths by race or ethnicity in the United States**. To do so, we can compare the distribution of the US population by race/ethnicity to the distribution of COVID-19 deaths by race/ethnicity. We begin with a visual representation:
 
-```{r}
-# percentage of total COVID-19 deaths compared to percentage of total US 
-# population by race or ethnicity
+```{r message=FALSE, warning=FALSE}
+# percentage of total COVID-19 deaths compared to percentage of total US population by race or ethnicity
 df_deaths_population_by_percent <- melt(data.frame(aggregated_covid_race_df$Race,
                             aggregated_covid_race_df$Deaths_Percent,
                             aggregated_covid_race_df$Population_Percent)) 

@@ -70,12 +70,10 @@ to the distribution of COVID-19 deaths by race/ethnicity. We begin with
 a visual representation:
 
 ``` r
-# percentage of total COVID-19 deaths compared to percentage of total US 
-# population by race or ethnicity
+# percentage of total COVID-19 deaths compared to percentage of total US population by race or ethnicity
 df_deaths_population_by_percent <- melt(data.frame(aggregated_covid_race_df$Race,
                             aggregated_covid_race_df$Deaths_Percent,
                             aggregated_covid_race_df$Population_Percent)) 
-#> Using aggregated_covid_race_df.Race as id variables
 colnames(df_deaths_population_by_percent) <- c("Race", "Variable", "Value")
 
 ggplot(df_deaths_population_by_percent, aes(x = Race, y = Value, fill = Variable)) +
