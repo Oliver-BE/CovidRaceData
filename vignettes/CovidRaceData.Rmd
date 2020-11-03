@@ -1,0 +1,20 @@
+---
+title: "CovidRaceData"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CovidRaceData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CovidRaceData)
+glimpse(aggregated_covid_race_df)
+```
