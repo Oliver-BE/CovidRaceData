@@ -26,7 +26,7 @@ each race/ethnicity composes in the US.
 ## Installation
 
 You can install the released version of CovidRaceData from
-[CRAN](https://CRAN.R-project.org) with:
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
@@ -58,14 +58,16 @@ ggplot(aggregated_covid_race_df, aes(x = reorder(Race, Cases_Per_100K), y = Case
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
+-----
+
 ### Analysis
 
 We can also use the provided data sets to answer questions such as
-whether or not there is a significant difference in the number of
-COVID-19 deaths by race or ethnicity in the United States. To do so, we
-can compare the proportion of US population by race/ethnicity to the
-proportion of COVID-19 deaths by race/ethnicity. We begin with a visual
-representation:
+**whether or not there is a significant difference in the number of
+COVID-19 deaths by race or ethnicity in the United States**. To do so,
+we can compare the distribution of the US population by race/ethnicity
+to the distribution of COVID-19 deaths by race/ethnicity. We begin with
+a visual representation:
 
 ``` r
 # percentage of total COVID-19 deaths compared to percentage of total US 
@@ -90,12 +92,12 @@ ggplot(df_deaths_population_by_percent, aes(x = Race, y = Value, fill = Variable
 
 #### Chi-Squared Test
 
-To test if the proportion of US population by race/ethnicity are
-significantly different than the proportion of deaths by race/ethnicity,
-we can carry out a chi-squared test. To carry out this test we first
-check our assumptions. We assume here that each data point is
-independent of one another and we can verify that 80% of expected counts
-are greater than 5. Thus, our assumptions are met.
+To test if the distribution of the US population by race/ethnicity is
+significantly different than the distribution of COVID-19 deaths by
+race/ethnicity, we can carry out a chi-squared test. To carry out this
+test we first check our assumptions. We assume here that each data point
+is independent of one another and we can verify that 80% of expected
+counts are greater than 5. Thus, our assumptions are met.
 
 Our null hypothesis here is that the distribution of our sample data
 (the number of COVID-19 deaths by race) matches the distribution of the
@@ -117,27 +119,36 @@ chisq.test(observed_frequency_deaths, p = expected_frequency)
 #> X-squared = 20960, df = 6, p-value < 2.2e-16
 ```
 
-Our observed test statistic \(X^2\) is 20960 and our p-value is 2.2e-16.
-Thus at a significance level \(\alpha=0.01\) we can reject the null
-hypothesis and conclude that there’s sufficient evidence to suggest that
-the distribution of the number of COVID-19 deaths by race does not match
-the distribution of the population of the US by race. This means that
-the distribution of COVID-19 deaths by race do not match what we would
-expect them to be (based on the distribution of population by race).
+Our observed test statistic \(X^2\) is \(20960\) and our p-value is
+\(2.2e-16\). Thus at a significance level \(\alpha=0.01\) we can reject
+the null hypothesis and conclude that there’s sufficient evidence to
+suggest that the distribution of the number of COVID-19 deaths by race
+does not match the distribution of the population of the US by race.
+**This means that the distribution of COVID-19 deaths by race do not
+match what we would expect them to be (based on the distribution of
+population by race).**
 
 #### ANOVA Test
 
-We can also carry out an ANOVA test to check for difference in group
-means.
+We can also carry out an ANOVA test to check for the difference in group
+means (which here is the number of deaths by race/ethnicity per 100
+thousand people).
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+From the visualization above, we can see that there is a clear
+difference in the number of deaths per 100 thousand people across
+different races/ethnicities, so we proceed with our ANOVA test to test
+this statistically.
 
 Our null hypothesis here is that all of the group means are equal
-(there’s an equal number of COVID-19 deaths for each race/ethnicity).
-Our alternative hypothesis is that the group means are not equal for all
-of the groups.
+(there’s an equal number of COVID-19 deaths per 100 thousand people
+for each race/ethnicity). Our alternative hypothesis is that the group
+means are not equal for all of the groups.
 
 ``` r
-cases_model <- lm(Deaths_Per_100K ~ Race, data = aggregated_covid_race_df)
-anova(cases_model)
+deaths_model <- lm(Deaths_Per_100K ~ Race, data = aggregated_covid_race_df)
+anova(deaths_model)
 #> Analysis of Variance Table
 #> 
 #> Response: Deaths_Per_100K
@@ -147,8 +158,9 @@ anova(cases_model)
 ```
 
 We observe an essentially perfect fit for this ANOVA F-test, meaning
-that we can reject the null hypothesis and conclude that the number of
-COVID-19 deaths is different across different races/ethnicities in the
-US. This matches what we saw in our EDA above, where there was very
-clearly a difference in the number of deaths between races (for example,
-92 cases for every 100,000 Black people vs 51 white people).
+that we can reject the null hypothesis and **conclude that the number of
+COVID-19 deaths per 100 thousand people is significantly different
+across different races/ethnicities in the US**. This matches what we saw
+in our visualization above, where there was very clearly a difference in
+the number of deaths between races (for example, 92 deaths for every 100
+thousand Black people vs 51 for every 100 thousand white people).
