@@ -11,12 +11,17 @@
 The `CovidRaceData` package contains two data sets on the COVID-19
 pandemic in the US by race/ethnicity. More specifically, it has data for
 the number of COVID-19 cases and deaths by race/ethnicity for each
-state. The raw data set (which is titled `covid_race_data_raw` in this
-package) was obtained from [The COVID Tracking
-Project](https://covidtracking.com/race/about#download-the-data) and the
-`aggregated_covid_race_df` contains information on the percent of
+state.
+
+The raw data set (`covid_race_data_raw`) was obtained from [The COVID
+Tracking
+Project](https://covidtracking.com/race/about#download-the-data) and
+contains the number of COVID-19 cases and deaths by race/ethnicity by US
+state (as well as each state’s population).
+
+The `aggregated_covid_race_df` contains information on the percent of
 cases/deaths by race/ethnicity vs. the percent of the population that
-each race/ethnicity compose in the US.
+each race/ethnicity composes in the US.
 
 ## Installation
 
